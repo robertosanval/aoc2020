@@ -2,7 +2,7 @@
 
 ## Intro
 
-This repo contains my solutions to AoC2020 and it's based on this zero-setup environment for [Advent of Code](https://adventofcode.com/2019).
+This repo contains my solutions to [Advent of Code 2020](https://adventofcode.com/2020/) and it's based on this zero-setup environment [Advent of Code](https://github.com/caderek/aoc-starter-js).
 
 ## Installation
 
