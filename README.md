@@ -1,31 +1,25 @@
-# Advent of Code 2019 starter for JS
+# Advent of Code 2020
 
 ## Intro
 
-This repo contains zero-setup environment for [Advent of Code](https://adventofcode.com/2019) challenges, with:
-
-- automatic creation of a challenge template,
-- automatic execution of a challenge code (with reloads),
-- quick utils for testing and reading input from a file.
-
-_Note: If you want to use TypeScript, check this repo: [AoC TS starter](https://github.com/caderek/aoc-starter-ts)_
+This repo contains my solutions to AoC2020 and it's based on this zero-setup environment for [Advent of Code](https://adventofcode.com/2019).
 
 ## Installation
 
-Clone the repo and go to the created folder:
+Clone this repo and go to the created folder:
 
 ```
-git clone https://github.com/caderek/aoc-starter-js.git aoc2019
+git clone https://github.com/robertosanval/aoc2020.git aoc2020
 ```
 
 ```
-cd aoc2019
+cd aoc2020
 ```
 
 Using NPM:
 
 ```
-npm i
+npm install
 ```
 
 Using Yarn:
@@ -50,16 +44,5 @@ Example:
 
 ```
 yarn start day1
-```
 
 If the day folder does not exist, it will be created from template.
-
-## Join my leaderboard
-
-You can [join](https://adventofcode.com/2019/leaderboard/private) my private leaderboard fo JS/TS programmers:
-
-Code:
-
-```
-107172-b51ab08f
-```
