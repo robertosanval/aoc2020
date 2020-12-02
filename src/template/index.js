@@ -1,8 +1,8 @@
-const { test, readInput } = require("../utils")
+const { test, readInput } = require("../utils");
 
-const prepareInput = (rawInput) => rawInput
+const prepareInput = (rawInput) => rawInput;
 
-const input = prepareInput(readInput())
+const input = prepareInput(readInput());
 
 const goA = (input) => {
   return
@@ -13,15 +13,16 @@ const goB = (input) => {
 }
 
 /* Tests */
-
-// test(result, expected)
+// test(result, expected);
 
 /* Results */
+console.time("Time 1");
+const resultA = goA(input);
+console.timeEnd("Time 1");
 
-console.time("Time")
-const resultA = goA(input)
-const resultB = goB(input)
-console.timeEnd("Time")
+console.time("Time 2");
+const resultB = goB(input);
+console.timeEnd("Time 2");
 
-console.log("Solution to part 1:", resultA)
-console.log("Solution to part 2:", resultB)
+console.log("Solution to part 1: ", resultA);
+console.log("Solution to part 2: ", resultB);
