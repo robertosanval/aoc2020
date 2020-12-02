@@ -5,15 +5,15 @@ const prepareInput = (rawInput) => rawInput
 
 const input = prepareInput(readInput())
 
+const regex = /(\d+)-(\d+) ([a-z]): ([a-z]+)/gm;
 const count = (char, word) => {
   const re = new RegExp(char, "ig");
   return ((word || '').match(re) || []).length;
 }
 
 const goA = (input) => {
-  const regex = /(\d+)-(\d+) ([a-z]): ([a-z]+)/gm;
-
   let validPasswords = 0;
+
   while ((m = regex.exec(input)) !== null) {
     // This is necessary to avoid infinite loops with zero-width matches
     if (m.index === regex.lastIndex) {
@@ -35,8 +35,8 @@ const goA = (input) => {
 }
 
 const goB = (input) => {
-const regex = /(\d+)-(\d+) ([a-z]): ([a-z]+)/gm;
   let validPasswords = 0;
+
   while ((m = regex.exec(input)) !== null) {
     // This is necessary to avoid infinite loops with zero-width matches
     if (m.index === regex.lastIndex) {
@@ -50,10 +50,9 @@ const regex = /(\d+)-(\d+) ([a-z]): ([a-z]+)/gm;
     const matchFirst = password.substr(min - 1, 1) === letter;
     const matchSecond = password.substr(max - 1, 1) === letter;
 
-    if (matchFirst ^ matchSecond) {
+    if (matchFirst !== matchSecond) {
       validPasswords++;
     }
-
   }
 
   return validPasswords;
