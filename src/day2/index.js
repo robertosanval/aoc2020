@@ -62,10 +62,13 @@ const goB = (input) => {
 // test(goB(input), 428)
 
 /* Results */
-console.time("Time")
+console.time("Time 1")
 const resultA = goA(input)
+console.timeEnd("Time 1")
+
+console.time("Time 2")
 const resultB = goB(input)
-console.timeEnd("Time")
+console.timeEnd("Time 2")
 
 console.log("Solution to part 1:", resultA)
 console.log("Solution to part 2:", resultB)
