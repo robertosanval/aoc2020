@@ -9,7 +9,7 @@ const fieldRules = {
   byr: /^(19[2-8][0-9]|199[0-9]|200[0-2])$/,
   iyr: /^(201[0-9]|2020)$/,
   eyr: /^(202[0-9]|2030)$/,
-  hgt: /^(\d+)(cm|in)$/, // Can be improved checking the ranges in the regex
+  hgt: /^((1[5-8][0-9]|19[0-3])cm|(59|6[0-9]|7[0-6])in)$/, // Thanks to @mariomka
   hcl: /^#[0-9a-f]{6}$/,
   ecl: /^amb|blu|brn|gry|grn|hzl|oth$/,
   pid: /^\d{9}$/,
@@ -44,18 +44,9 @@ const goB = (input) => {
 
         const field = m[1], value = m[2];
 
-        if (field === 'hgt' && fieldRules[field].test(value)) {
-          var match = fieldRules[field].exec(value);
-          if (match[2] === 'cm' && !(match[1] > 150 && match[1] <= 193) ||
-              match[2] === 'in' && !(match[1] > 59 && match[1] <= 76)) {
+        if (!fieldRules[field].test(value)) {
             isValidPassport = false;
             break;
-          }
-        } else {
-          if (!fieldRules[field].test(value)) {
-            isValidPassport = false;
-            break;
-          }
         }
       }
 
@@ -67,7 +58,8 @@ const goB = (input) => {
 }
 
 /* Tests */
-// test(result, expected);
+test(goA(input), 210);
+test(goB(input), 131);
 
 /* Results */
 console.time("Time 1");
