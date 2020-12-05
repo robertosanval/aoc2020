@@ -19,7 +19,24 @@ const goA = (input) => {
 }
 
 const goB = (input) => {
-  return
+  const seatsCodes = input.trim().split('\n');
+  const seatsNumbers = [];
+
+  seatsCodes.forEach(seatCode => seatsNumbers.push(getSeatNumber(seatCode)));
+
+  const orderedSeatsNumbers = seatsNumbers.sort((a, b) => a - b);
+  let missingNumber;
+
+  for(i = 1; i < orderedSeatsNumbers.length - 1; i++) {
+    if (!orderedSeatsNumbers.find(seatNumber => seatNumber === orderedSeatsNumbers[i] - 1)) {
+      missingNumber = orderedSeatsNumbers[i] - 1;
+    }
+    else if (!orderedSeatsNumbers.find(seatNumber => seatNumber === orderedSeatsNumbers[i] + 1)) {
+      missingNumber = orderedSeatsNumbers[i] + 1;
+    }
+  }
+
+  return missingNumber;
 }
 
 /* Tests */
