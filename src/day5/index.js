@@ -27,20 +27,27 @@ const goB = (input) => {
   const orderedSeatsNumbers = seatsNumbers.sort((a, b) => a - b);
   let missingNumber;
 
-  for(i = 1; i < orderedSeatsNumbers.length - 1; i++) {
-    if (!orderedSeatsNumbers.find(seatNumber => seatNumber === orderedSeatsNumbers[i] - 1)) {
-      missingNumber = orderedSeatsNumbers[i] - 1;
-    }
-    else if (!orderedSeatsNumbers.find(seatNumber => seatNumber === orderedSeatsNumbers[i] + 1)) {
-      missingNumber = orderedSeatsNumbers[i] + 1;
-    }
-  }
+  const range = (start, stop, step = 1) => {
+    return [...Array(stop - start + 1).keys()]
+      .filter(i => !(i % Math.round(step)))
+      .map(v => start + v)
+  };
+
+  const allSeats = range(
+    Math.min(...orderedSeatsNumbers),
+    Math.max(...orderedSeatsNumbers)
+  );
+  const allSeatsButOne = new Set(orderedSeatsNumbers);
+
+  var difference = [...new Set(allSeats.filter(x => !allSeatsButOne.has(x)))];
+  missingNumber = parseInt(difference.join(''));
 
   return missingNumber;
 }
 
 /* Tests */
-// test(result, expected);
+test(goA(input), 911);
+test(goB(input), 629);
 
 /* Results */
 console.time("Time 1");
