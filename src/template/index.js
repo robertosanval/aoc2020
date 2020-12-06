@@ -13,7 +13,8 @@ const goB = (input) => {
 }
 
 /* Tests */
-// test(result, expected);
+// test(goA(input), expected);
+// test(goB(input), expected);
 
 /* Results */
 console.time("Time 1");
