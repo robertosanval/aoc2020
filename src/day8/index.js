@@ -29,12 +29,42 @@ const goA = (input) => {
 }
 
 const goB = (input) => {
-  return
+  const codelines = input.trim().split('\n');
+
+  for (let corrupted = 0; corrupted < codelines.length; corrupted++) {
+    if (codelines[corrupted].split(' ')[0] === "acc") continue;
+
+    let acc = 0;
+    let pos = 0;
+    let codelinesexecuted = [];
+    do {
+      if (codelinesexecuted.includes(pos)) break;
+      if (pos === codelines.length) return acc;
+
+      codelinesexecuted.push(pos);
+
+      let ins = codelines[pos].split(' ')[0];
+      let val = parseInt(codelines[pos].split(' ')[1]);
+
+      if (pos === corrupted) ins = (ins === 'nop') ? 'jmp' : 'nop';
+
+      if (ins === 'acc') {
+        acc += val;
+        pos++;
+      }
+      else if (ins === 'jmp') {
+        pos += val;
+      }
+      else if (ins === 'nop') {
+        pos++;
+      }
+    } while (pos <= codelines.length);
+  }
 }
 
 /* Tests */
-// test(goA(input), expected);
-// test(goB(input), expected);
+test(goA(input), 1600);
+test(goB(input), 1543);
 
 /* Results */
 console.time("Time 1");
