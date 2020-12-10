@@ -23,13 +23,14 @@ function sumRanges(numberToFind) {
   for (let i = 0; i < input.length; i++) {
     for (let j = 0; j <= input.length; j++) {
       const groupToSum = input.slice(i, i + j);
+
       if (groupToSum.length > 0) {
         const sum = groupToSum.reduce((acc, num) => acc + num);
+
         if (sum === numberToFind) {
           return Math.min(...groupToSum) + Math.max(...groupToSum);
         }
       }
-
     }
   }
 }
