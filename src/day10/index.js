@@ -53,7 +53,7 @@ const goB = (input) => {
 
 /* Tests */
 test(goA(input), 1820);
-// test(goB(input), 3454189699072);
+test(goB(input), 3454189699072);
 
 
 /* Results */
