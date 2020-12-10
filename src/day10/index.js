@@ -26,11 +26,34 @@ const goA = (input) => {
 }
 
 const goB = (input) => {
-  return
+  // Oject with all of the arrangements
+  // I'll save all the posibilities in each item
+  const arrangements = {};
+
+  // input is sorted asc
+  // The last input is 1
+  arrangements[input[input.length - 1]] = 1;
+
+  // Count all by inputs from end to start
+  for (let i = input.length - 2; i >= 0; i--) {
+    arrangements[input[i]] = 0; // Count start
+
+    // Check with the next three items of i
+    for (let j = i + 1; j < input.length && j <= i + 3; j++) {
+      // If the difference is less or equal to 3 then is valid arrangement, increment
+      if (input[j] - input[i] <= 3) {
+        arrangements[input[i]] += arrangements[input[j]];
+      }
+    }
+  }
+
+  // First item is the solution
+  return arrangements[0];
 }
 
 /* Tests */
 test(goA(input), 1820);
+// test(goB(input), 3454189699072);
 
 
 /* Results */
