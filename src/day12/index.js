@@ -55,7 +55,48 @@ const goA = (input) => {
 }
 
 const goB = (input) => {
-  return
+  let position = { x: 0, y: 0 };
+  let waypoint = { x: 10, y: 1 };
+  let currentDirection = 'E';
+
+  input.forEach(instrucction => {
+    if (instrucction.action === 'F') {
+      position.x += waypoint.x * instrucction.value;
+      position.y += waypoint.y * instrucction.value;
+    }
+    else if (instrucction.action === 'R') {
+      for (let d = 0; d < (instrucction.value / 90); d++) {
+        let tempX = waypoint.x;
+        let tempY = waypoint.y;
+
+        waypoint.x = tempY;
+        waypoint.y = tempX * -1;
+      }
+    }
+    else if (instrucction.action === 'L') {
+      for (let d = 0; d < (instrucction.value / 90); d++) {
+        let tempX = waypoint.x;
+        let tempY = waypoint.y;
+
+        waypoint.x = tempY * -1;
+        waypoint.y = tempX;
+      }
+    }
+    else if (instrucction.action === 'N') {
+      waypoint.y += instrucction.value;
+    }
+    else if (instrucction.action === 'S') {
+      waypoint.y -= instrucction.value;
+    }
+    else if (instrucction.action === 'E') {
+      waypoint.x += instrucction.value;
+    }
+    else if (instrucction.action === 'W') {
+      waypoint.x -= instrucction.value;
+    }
+  });
+
+  return Math.abs(position.x) + Math.abs(position.y);
 }
 
 /* Results */
@@ -69,7 +110,7 @@ console.timeEnd("Time 2");
 
 /* Tests */
 test(resultA, 582);
-// test(resultB, expected);
+test(resultB, 52069);
 
 console.log("Solution to part 1: ", resultA);
 console.log("Solution to part 2: ", resultB);
