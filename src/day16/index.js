@@ -78,6 +78,19 @@ const goA = () => {
 }
 
 const goB = () => {
+  // Remove incorrect tickets
+  nearbyTickets = nearbyTickets.filter(ticket => {
+    return ticket.filter(number => {
+      return !rules.some(rule => {
+        return (number >= rule.ranges[0].min && number <= rule.ranges[0].to ) || ( number >= rule.ranges[1].min && number <= rule.ranges[1].max )
+      });
+    }).length === 0;
+  });
+
+  console.log(nearbyTickets);
+
+
+
   return
 }
 
